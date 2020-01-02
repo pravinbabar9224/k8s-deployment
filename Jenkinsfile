@@ -19,8 +19,10 @@ pipeline {
     stage('Building image') {
       steps{
         script {
+
           sh 'cd /var/lib/jenkins/workspace/kuberntes-cicd/src/'
-          dockerImage = docker.build registry + ":v$BUILD_NUMBER"
+          echo "$pwd"
+          #dockerImage = docker.build registry + ":v$BUILD_NUMBER"
         }
       }
     }
