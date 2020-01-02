@@ -22,7 +22,7 @@ pipeline {
       steps{
         script {
           sh 'cd src/'
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":v$BUILD_NUMBER"
         }
       }
     }
