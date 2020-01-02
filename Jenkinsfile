@@ -21,6 +21,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
+          sh 'cd src/'
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
@@ -28,6 +29,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
+          sh 'cd src/'
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
