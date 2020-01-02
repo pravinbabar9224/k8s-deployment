@@ -5,7 +5,7 @@ pipeline {
     dockerImage = ''
   }
   agent {
-       label 'slave1'
+       any
   }
   stages {
     stage('Cleaning Workspace') {
@@ -26,7 +26,7 @@ pipeline {
         }
       }
     }
-    stage('Deploy Image') {
+    stage('Push Image') {
       steps{
         script {
           sh 'cd src/'
@@ -36,5 +36,11 @@ pipeline {
         }  
       }
     }
+    stage('Deploy chart'){
+      steps{
+         sh 'helm install nginx --name-template=nginx --set.image.tag=$BUILD_NUMBER'
+}
+
+}
   }
 }
