@@ -22,7 +22,7 @@ pipeline {
 
           sh 'cd /var/lib/jenkins/workspace/kuberntes-cicd/src/'
           echo "$pwd"
-          #dockerImage = docker.build registry + ":v$BUILD_NUMBER"
+          //dockerImage = docker.build registry + ":v$BUILD_NUMBER"
         }
       }
     }
