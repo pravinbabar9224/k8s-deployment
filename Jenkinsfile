@@ -4,9 +4,7 @@ pipeline {
     registryCredential = 'docker-hub'
     dockerImage = ''
   }
-  agent {
-       any
-  }
+  agent any
   stages {
     stage('Cleaning Workspace') {
         steps {
