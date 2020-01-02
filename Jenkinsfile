@@ -38,7 +38,7 @@ pipeline {
     }
     stage('Deploy chart'){
       steps{
-         sh 'helm install nginx --name-template=nginx --set.image.tag=$BUILD_NUMBER'
+         sh 'helm install nginx --name-template=nginx --set.image.tag=v$BUILD_NUMBER'
 }
 
 }
