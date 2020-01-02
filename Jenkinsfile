@@ -19,7 +19,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          sh '`cd $JENKINS_HOME/kuberntes-cicd/src/`'
+          sh 'cd /var/lib/jenkins/workspace/kuberntes-cicd/src/'
           dockerImage = docker.build registry + ":v$BUILD_NUMBER"
         }
       }
@@ -27,7 +27,7 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          sh '`cd $JENKINS_HOME/kuberntes-cicd/src/`'
+          sh 'cd /var/lib/jenkins/workspace/kuberntes-cicd/src/'
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
@@ -36,7 +36,7 @@ pipeline {
     }
     stage('Deploy chart'){
       steps{
-         sh '`cd $JENKINS_HOME/kuberntes-cicd/charts`'
+         sh 'cd /var/lib/jenkins/workspace/kuberntes-cicd/charts'
          sh 'helm install nginx --name-template=nginx --set.image.tag=v$BUILD_NUMBER'
 }
 
