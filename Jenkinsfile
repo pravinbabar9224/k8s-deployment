@@ -40,7 +40,7 @@ pipeline {
     stage('Deploy chart'){
       steps{
          dir('/var/lib/jenkins/workspace/kuberntes-cicd/charts'){
-              sh 'helm install nginx --name-template=nginx --set.image.tag=v$BUILD_NUMBER'
+              sh 'helm install nginx --name-template=nginx --set image.tag=v$BUILD_NUMBER'
 }
 }
 
