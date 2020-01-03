@@ -21,7 +21,7 @@ pipeline {
         script {
 
           dir('/var/lib/jenkins/workspace/kuberntes-cicd/src/'){
-          echo "path:$pwd"
+          sh 'pwd'
           sh 'ls'
 }          //dockerImage = docker.build registry + ":v$BUILD_NUMBER"
         }
